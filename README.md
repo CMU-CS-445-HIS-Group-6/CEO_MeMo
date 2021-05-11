@@ -7,6 +7,46 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Requirements
+
+- [Composer](https://getcomposer.org/)
+- [Nodejs](https://nodejs.org/en/)
+- [Laragon](https://github.com/Phu1237/laragon/releases) (Optional)
+
+## How to install
+
+First, you need to open your terminal at the project path
+
+### Install dependencies
+
+- Install vendor
+
+```bash
+composer install
+```
+
+- Install node_modules
+
+```bash
+npm install
+```
+
+### Configuration
+
+- Rename .env.example to .env and fill in it with your information
+  - DB_DATABASE: MySQL Database name
+  - DB_USERNAME: MySQL Database username
+  - DB_PASSWORD: MySQL Database password
+- If you are using Laragon, then just start Apache (or Nginx) and MySQL
+- If you are not, start MySQL and run the command below
+
+```bash
+php artisan serve
+```
+
+- If you are using Laragon, then your website will be at [localhost](http://localhost) or [projectname.test](projectname.test)
+- If you are not, then your website will be at [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
