@@ -29,6 +29,7 @@ composer install
 
 ```bash
 npm install
+npm run dev
 ```
 
 ### Configuration
@@ -37,6 +38,14 @@ npm install
   - DB_DATABASE: MySQL Database name
   - DB_USERNAME: MySQL Database username
   - DB_PASSWORD: MySQL Database password
+- Migrate database & seed data
+
+```bash
+php artisan migrate --seed
+```
+
+### Run
+
 - If you are using Laragon, then just start Apache (or Nginx) and MySQL
 - If you are not, start MySQL and run the command below
 
@@ -44,8 +53,12 @@ npm install
 php artisan serve
 ```
 
-- If you are using Laragon, then your website will be at [localhost](http://localhost) or [projectname.test](projectname.test)
+- If you are using Laragon, then your website will be at [localhost](http://localhost) or [projectfolder.test](projectname.test)
 - If you are not, then your website will be at [http://127.0.0.1:8000](http://127.0.0.1:8000)
+- You can login with the following account:
+  - account1@gmail.com - 12345678
+  - account2@gmail.com - 12345678
+  - account3@gmail.com - 12345678
 
 ## About Laravel
 
