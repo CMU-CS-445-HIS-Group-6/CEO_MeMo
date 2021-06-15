@@ -25,13 +25,6 @@ First, you need to open your terminal at the project path
 composer install
 ```
 
-- Install node_modules
-
-```bash
-npm install
-npm run dev
-```
-
 ### Configuration
 
 - Rename .env.example to .env and fill in it with your information
@@ -55,10 +48,6 @@ php artisan serve
 
 - If you are using Laragon, then your website will be at [localhost](http://localhost) or [projectfolder.test](projectname.test)
 - If you are not, then your website will be at [http://127.0.0.1:8000](http://127.0.0.1:8000)
-- You can login with the following account:
-  - account1@gmail.com - 12345678
-  - account2@gmail.com - 12345678
-  - account3@gmail.com - 12345678
 
 ## About Laravel
 
