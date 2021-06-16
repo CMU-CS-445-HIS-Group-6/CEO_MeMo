@@ -11,11 +11,11 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($list as $employee)
+            @forelse ($list as $item)
             <tr>
-                <th>{{ $employee->id }}</th>
-                <td>{{ $employee->FirstName }} {{ $employee->LastName }}</td>
-                <td>${{ number_format($employee->PaidToDays, 2) }}</td>
+                <th>{{ $item->employee->id }}</th>
+                <td>{{ $item->employee->FirstName }} {{ $item->employee->LastName }}</td>
+                <td>${{ number_format($item->PaidToDays, 2) }}</td>
             </tr>
             @empty
 

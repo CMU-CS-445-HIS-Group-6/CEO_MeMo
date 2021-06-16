@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PR_Employee;
 use App\Models\HRM_Employee;
 use Illuminate\Http\Request;
+use App\Models\HRM_Department;
 
 class UserController extends Controller
 {
@@ -17,7 +18,9 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('users.create');
+        $departments = HRM_Department::all();
+
+        return view('users.create', compact('departments'));
     }
 
     public function store(Request $request)
@@ -32,9 +35,10 @@ class UserController extends Controller
             'phonenumber' => 'required|string|max:13',
             'ethnicity' => 'required|string|max:45',
             'recruitmentdate' => 'required|date',
+            'department_id' => 'required|integer',
         ]);
         $request = $request->only([
-            'firstname', 'lastname', 'email', 'birthday', 'gender', 'address', 'phonenumber', 'ethnicity', 'recruitmentdate',
+            'firstname', 'lastname', 'email', 'birthday', 'gender', 'address', 'phonenumber', 'ethnicity', 'recruitmentdate', 'department_id',
         ]);
         if ($request != null) {
             $firstname = $request['firstname'];
@@ -46,6 +50,7 @@ class UserController extends Controller
             $phonenumber = $request['phonenumber'];
             $ethnicity = $request['ethnicity'];
             $recruitmentdate = date('Y-m-d H:i:s.v', strtotime($request['recruitmentdate']));
+            $department = $request['department_id'];
             HRM_Employee::create([
                 'FirstName' => $firstname,
                 'LastName' => $lastname,
@@ -56,6 +61,7 @@ class UserController extends Controller
                 'PhoneNumber' => $phonenumber,
                 'Ethnicity' => $ethnicity,
                 'RecruitmentDate' => $recruitmentdate,
+                'department_id' => $department,
             ]);
             PR_Employee::create([
                 'FirstName' => $firstname,
@@ -71,8 +77,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $employee = HRM_Employee::find($id);
+        $departments = HRM_Department::all();
         if ($employee != null) {
-            return view('users.edit', compact('employee'));
+            return view('users.edit', compact('employee', 'departments'));
         }
         echo "<script>window.location.href='".route('users.index')."';alert('Employee not found!');</script>";
     }
@@ -84,14 +91,15 @@ class UserController extends Controller
             'lastname' => 'required|string|max:45',
             'email' => 'required|email|max:45|unique:employees,email,'.$id,
             'birthday' => 'required|date',
-            'gender' => 'required|numeric|between:0,1',
+            'gender' => 'required|integer|between:0,1',
             'address' => 'required|string',
             'phonenumber' => 'required|string|max:13',
             'ethnicity' => 'required|string|max:45',
             'recruitmentdate' => 'required|date',
+            'department_id' => 'required|integer',
         ]);
         $request = $request->only([
-            'firstname', 'lastname', 'email', 'birthday', 'gender', 'address', 'phonenumber', 'ethnicity', 'recruitmentdate',
+            'firstname', 'lastname', 'email', 'birthday', 'gender', 'address', 'phonenumber', 'ethnicity', 'recruitmentdate', 'department_id',
         ]);
         $hrm_employee = HRM_Employee::where('id', $id);
         $pr_employee = PR_Employee::where('id', $id);
@@ -105,6 +113,7 @@ class UserController extends Controller
             $phonenumber = $request['phonenumber'];
             $ethnicity = $request['ethnicity'];
             $recruitmentdate = date('Y-m-d H:i:s.v', strtotime($request['recruitmentdate']));
+            $department = $request['department_id'];
             $hrm_employee->update([
                 'FirstName' => $firstname,
                 'LastName' => $lastname,
@@ -115,6 +124,7 @@ class UserController extends Controller
                 'PhoneNumber' => $phonenumber,
                 'Ethnicity' => $ethnicity,
                 'RecruitmentDate' => $recruitmentdate,
+                'department_id' => $department,
             ]);
             $pr_employee->update([
                 'FirstName' => $firstname,

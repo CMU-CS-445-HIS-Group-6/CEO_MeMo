@@ -33,7 +33,7 @@
                         <td>{{ $nhanvien->Ethnicity }}</td>
                         <td>
                             <a href="{{ route('users.edit', ['id' => $nhanvien->id ]) }}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button></a>
-                            <a href="javascript:;" onclick="deleteId({{ $nhanvien->id }});"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-trash"></i></button></td>
+                            <a href="javascript:;" onclick="deleteId({{ $nhanvien->id }});"><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td>
                         </td>
                     </tr>
                     @empty

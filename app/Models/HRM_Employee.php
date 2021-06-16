@@ -9,14 +9,14 @@ class HRM_Employee extends Model
 {
     use HasFactory;
     protected $connection = 'sqlsrv';
-    protected $table = 'Employees';
+    protected $table = 'employees';
     public $timestamps = false;
     protected $fillable = [
-        'FirstName', 'LastName', 'Gender', 'Birthday', 'Address', 'Email', 'PhoneNumber', 'Ethnicity', 'RecruitmentDate', 'Benefits', 'Benefits_old',
+        'FirstName', 'LastName', 'Gender', 'Birthday', 'Address', 'Email', 'PhoneNumber', 'Ethnicity', 'RecruitmentDate', 'Benefits', 'Benefits_old', 'department_id',
     ];
 
-    public function phongban()
+    public function department()
     {
-        return $this->belongsTo(HRM_PhongBan::class, 'MAPHONGBAN');
+        return $this->belongsTo(HRM_Department::class);
     }
 }

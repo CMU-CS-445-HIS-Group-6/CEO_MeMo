@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\HRM_Employee;
+use App\Models\HRM_Department;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class HRM_EmployeeFactory extends Factory
@@ -36,6 +37,7 @@ class HRM_EmployeeFactory extends Factory
             'RecruitmentDate' => $this->faker->dateTimeThisDecade(),
             'Benefits' => $benefits,
             'Benefits_old' => $benefits_old,
+            'department_id' => HRM_Department::inRandomOrder()->first()->id,
         ];
     }
 }

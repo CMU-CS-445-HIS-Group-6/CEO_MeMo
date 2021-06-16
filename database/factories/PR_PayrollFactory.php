@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\PR_Employee;
+use App\Models\PR_Payroll;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PR_EmployeeFactory extends Factory
+class PR_PayrollFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = PR_Employee::class;
+    protected $model = PR_Payroll::class;
 
     /**
      * Define the model's default state.
@@ -21,10 +21,12 @@ class PR_EmployeeFactory extends Factory
      */
     public function definition()
     {
+        $paidLastYear = rand(5000, 15000);
+
         return [
-            'LastName' => $this->faker->lastName,
-            'FirstName' => $this->faker->firstName,
-            'VacationDays' => $this->faker->numberBetween(0, 5),
+            'WorkingDays' => $this->faker->numberBetween(0, 400),
+            'PaidToDays' => rand($paidLastYear, $paidLastYear * 3),
+            'PaidLastYear' => $paidLastYear,
         ];
     }
 }

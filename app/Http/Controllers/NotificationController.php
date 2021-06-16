@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PR_Payroll;
 use App\Models\PR_Employee;
 use App\Models\HRM_Employee;
 
@@ -24,11 +25,12 @@ class NotificationController extends Controller
 
     public function fullyear()
     {
-        $list = PR_Employee::where('WorkingDays', '>=', 365)->get();
+        $list = PR_Payroll::where('WorkingDays', '>=', 365)->get();
         $recruitment_list = [];
         foreach ($list as $item) {
-            $hrm_list = HRM_Employee::select('RecruitmentDate')->where('id', $item->id)->first();
-            $recruitment_list[$item->id] = $hrm_list->RecruitmentDate;
+            $id = $item->employee_id;
+            $hrm_list = HRM_Employee::select('RecruitmentDate')->where('id', $id)->first();
+            $recruitment_list[$id] = $hrm_list->RecruitmentDate;
         }
 
         return view('notifications.fullyear', compact('list', 'recruitment_list'));

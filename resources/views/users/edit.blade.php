@@ -84,7 +84,18 @@
                             <input id="recruitmentdate" name="recruitmentdate" class="form-control" type="datetime-local" value="{{ date('Y-m-d\TH:i', strtotime($employee->RecruitmentDate)) }}">
                         </div>
                     </div>
-                </div>
+                    <div class="mb-3 row">
+                        <label for="department_id" class="col-sm-2 col-form-label">Department</label>
+                        <div class="col-sm-10">
+                            <select id="department_id" name="department_id" class="form-control">
+                                @forelse ($departments as $department)
+                                <option value="{{ $department->id }}" @if ($employee->department_id == $department->id) selected @endif>{{ $department->Name }}</option>
+                                @empty
+
+                                @endforelse
+                            </select>
+                        </div>
+                    </div>                </div>
                 <div class="col-2 text-center">
                     <i class="fas fa-user-alt fa-10x"></i>
                     <div class="pt-5">

@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        \App\Models\HRM_Department::factory(5)->create();
         \App\Models\HRM_Employee::factory(10)->create()->each(function ($employee) {
             $now = new DateTime();
             $daysTillNow = $now->diff($employee->RecruitmentDate)->format('%a');
@@ -23,6 +24,9 @@ class DatabaseSeeder extends Seeder
             \App\Models\PR_Employee::factory()->create([
                 'FirstName' => $employee->FirstName,
                 'LastName' => $employee->LastName,
+            ]);
+            \App\Models\PR_Payroll::factory()->create([
+                'employee_id' => $employee->id,
                 'WorkingDays' => $workingDays,
                 'PaidToDays' => $paidToDays,
                 'PaidLastYear' => $paidLastYear,

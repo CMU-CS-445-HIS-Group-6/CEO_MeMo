@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PR_Payroll;
 use App\Models\PR_Employee;
 use App\Models\HRM_Employee;
 
@@ -9,7 +10,7 @@ class StaticController extends Controller
 {
     public function totalearnings()
     {
-        $query = PR_Employee::query();
+        $query = PR_Payroll::query();
         $total = $query->sum('PaidToDays');
         $list = $query->get();
 

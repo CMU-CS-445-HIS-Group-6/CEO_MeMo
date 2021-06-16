@@ -12,12 +12,12 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($list as $employee)
+            @forelse ($list as $item)
             <tr>
-                <th>{{ $employee->id }}</th>
-                <td>{{ $employee->FirstName }} {{ $employee->LastName }}</td>
-                <td>{{ $recruitment_list[$employee->id] }}</td>
-                <td>{{ $employee->WorkingDays }}</>
+                <th>{{ $item->employee->id }}</th>
+                <td>{{ $item->employee->FirstName }} {{ $item->employee->LastName }}</td>
+                <td>{{ $recruitment_list[$item->employee->id] }}</td>
+                <td>{{ $item->WorkingDays }}</>
             </tr>
             @empty
 

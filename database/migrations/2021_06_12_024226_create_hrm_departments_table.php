@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePrEmployeesTable extends Migration
+class CreateHrmDepartmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePrEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql')->create('employees', function (Blueprint $table) {
+        Schema::connection('sqlsrv')->create('departments', function (Blueprint $table) {
             $table->id();
-            $table->string('FirstName', 45);
-            $table->string('LastName', 45);
-            $table->integer('VacationDays')->default(0);
+            $table->string('Name', 45);
+            $table->string('Address');
         });
     }
 
@@ -28,6 +27,6 @@ class CreatePrEmployeesTable extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql')->dropIfExists('employees');
+        Schema::connection('sqlsrv')->dropIfExists('departments');
     }
 }

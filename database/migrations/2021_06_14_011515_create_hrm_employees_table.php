@@ -26,6 +26,7 @@ class CreateHrmEmployeesTable extends Migration
             $table->dateTime('RecruitmentDate');
             $table->integer('Benefits')->default(0);
             $table->integer('Benefits_old')->default(0);
+            $table->foreignId('department_id')->nullable()->constrained()->nullOnDelete();
         });
     }
 
