@@ -12,7 +12,8 @@
 - [Composer](https://getcomposer.org/)
 - [Nodejs](https://nodejs.org/en/)
 - [Laragon](https://github.com/Phu1237/laragon/releases) (Optional)
-
+- SQL Server
+- [Cài đặt SQL Server để kết nối](https://luuthuthuat.blogspot.com/2021/06/cai-at-sql-server-express.html)
 ## How to install
 
 First, you need to open your terminal at the project path
@@ -31,6 +32,9 @@ composer install
   - DB_DATABASE: MySQL Database name
   - DB_USERNAME: MySQL Database username
   - DB_PASSWORD: MySQL Database password
+  - DB2_DATABASE: SQL Server Database name
+  - DB2_USERNAME: SQL Server Database username
+  - DB2_PASSWORD: SQL Server Database password
 - Migrate database & seed data
 
 ```bash
