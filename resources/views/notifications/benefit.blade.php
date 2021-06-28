@@ -14,8 +14,8 @@
         <tbody>
             @forelse ($list as $employee)
             <tr>
-                <th>{{ $employee->id }}</th>
-                <td>{{ $employee->FirstName }} {{ $employee->LastName }}</td>
+                <th>{{ $employee->Employee_ID }}</th>
+                <td>{{ $employee->First_Name }} {{ $employee->Last_Name }}</td>
                 <td>{{ $employee->Benefits }}</td>
                 <td>{{ $employee->Benefits_old }}</td>
             </tr>

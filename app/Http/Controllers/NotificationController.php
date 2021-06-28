@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PR_Payroll;
 use App\Models\PR_Employee;
-use App\Models\HRM_Employee;
+use App\Models\HRM_Personal;
+use App\Models\HRM_Employment;
 
 class NotificationController extends Controller
 {
     public function benefit()
     {
-        $list = HRM_Employee::where('benefits_old', '!=', 0)->get();
+        $list = HRM_Personal::where('benefits_old', '!=', 0)->get();
 
         return view('notifications.benefit', compact('list'));
     }
@@ -18,27 +18,21 @@ class NotificationController extends Controller
     public function daysoff()
     {
         $allowed = 3;
-        $list = PR_Employee::where('VacationDays', '>', $allowed)->get();
+        $list = PR_Employee::where('VacationDays', '>', $allowed)->orderBy('VacationDays', 'DESC')->get();
 
         return view('notifications.daysoff', compact('list', 'allowed'));
     }
 
     public function fullyear()
     {
-        $list = PR_Payroll::where('WorkingDays', '>=', 365)->get();
-        $recruitment_list = [];
-        foreach ($list as $item) {
-            $id = $item->employee_id;
-            $hrm_list = HRM_Employee::select('RecruitmentDate')->where('id', $id)->first();
-            $recruitment_list[$id] = $hrm_list->RecruitmentDate;
-        }
+        $list = HRM_Employment::where('Hire_Date', '<', now()->subDays(365))->orderBy('Hire_Date', 'ASC')->get();
 
-        return view('notifications.fullyear', compact('list', 'recruitment_list'));
+        return view('notifications.fullyear', compact('list'));
     }
 
     public function birthday()
     {
-        $list = HRM_Employee::whereMonth('Birthday', date_format(now(), "m"))->get();
+        $list = HRM_Personal::whereMonth('Birthday', date_format(now(), "m"))->orderBy('Employee_id', 'ASC')->get();
 
         return view('notifications.birthday', compact('list'));
     }

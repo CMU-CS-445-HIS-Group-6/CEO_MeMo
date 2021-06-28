@@ -14,10 +14,10 @@
         <tbody>
             @forelse ($list as $item)
             <tr>
-                <th>{{ $item->employee->id }}</th>
-                <td>{{ $item->employee->FirstName }} {{ $item->employee->LastName }}</td>
-                <td>{{ $recruitment_list[$item->employee->id] }}</td>
-                <td>{{ $item->WorkingDays }}</>
+                <th>{{ $item->Employee_ID }}</th>
+                <td>{{ $item->employee->First_Name }} {{ $item->employee->Last_Name }}</td>
+                <td>{{ $item->Hire_Date }}</td>
+                <td>{{ \Carbon\Carbon::parse($item->Hire_Date)->diffInDays() }}</>
             </tr>
             @empty
 

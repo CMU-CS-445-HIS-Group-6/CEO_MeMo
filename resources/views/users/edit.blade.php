@@ -14,7 +14,7 @@
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $error)
-                    {{ $error }}<br/>
+                    {{ $error }}<br />
                     @endforeach
                 </div>
                 @endif
@@ -22,13 +22,13 @@
                     <div class="mb-3 row">
                         <label for="firstname" class="col-sm-2 col-form-label">First name</label>
                         <div class="col-sm-10">
-                            <input id="firstname" name="firstname" class="form-control" value="{{ $employee->FirstName }}">
+                            <input id="firstname" name="firstname" class="form-control" value="{{ $employee->First_Name }}">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="lastname" class="col-sm-2 col-form-label">Last name</label>
                         <div class="col-sm-10">
-                            <input id="lastname" name="lastname" class="form-control" value="{{ $employee->LastName }}">
+                            <input id="lastname" name="lastname" class="form-control" value="{{ $employee->Last_Name }}">
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -63,13 +63,13 @@
                     <div class="mb-3 row">
                         <label for="address" class="col-sm-2 col-form-label">Address</label>
                         <div class="col-sm-10">
-                            <input id="address" name="address" class="form-control" type="text" value="{{ $employee->Address }}">
+                            <input id="address" name="address" class="form-control" type="text" value="{{ $employee->Address1 }}">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="phonenumber" class="col-sm-2 col-form-label">Phone Number</label>
                         <div class="col-sm-10">
-                            <input id="phonenumber" name="phonenumber" class="form-control" type="text" value="{{ $employee->PhoneNumber }}">
+                            <input id="phonenumber" name="phonenumber" class="form-control" type="text" value="{{ $employee->Phone_Number }}">
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -79,27 +79,25 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="birthday" class="col-sm-2 col-form-label">Recruitment Date</label>
+                        <label for="shareholder_status" class="col-sm-2 col-form-label">Shareholder Status</label>
                         <div class="col-sm-10">
-                            <input id="recruitmentdate" name="recruitmentdate" class="form-control" type="datetime-local" value="{{ date('Y-m-d\TH:i', strtotime($employee->RecruitmentDate)) }}">
+                            <select id="shareholder_status" name="shareholder_status" class="form-control">
+                                <option value="0" @if ($employee->Shareholder_Status == 0) selected @endif>No</option>
+                                <option value="1" @if ($employee->Shareholder_Status == 1) selected @endif>Yes</option>
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="department_id" class="col-sm-2 col-form-label">Department</label>
+                        <label for="hiredate" class="col-sm-2 col-form-label">Hire date</label>
                         <div class="col-sm-10">
-                            <select id="department_id" name="department_id" class="form-control">
-                                @forelse ($departments as $department)
-                                <option value="{{ $department->id }}" @if ($employee->department_id == $department->id) selected @endif>{{ $department->Name }}</option>
-                                @empty
-
-                                @endforelse
-                            </select>
+                            <input id="hiredate" name="hiredate" class="form-control" type="datetime-local" value="{{ date('Y-m-d\TH:i', strtotime($employee->employement->Hire_Date)) }}">
                         </div>
-                    </div>                </div>
+                    </div>
+                </div>
                 <div class="col-2 text-center">
                     <i class="fas fa-user-alt fa-10x"></i>
                     <div class="pt-5">
-                        <input class="text-center form-control" value="ID: {{ $employee->id }}" disabled>
+                        <input class="text-center form-control" value="ID: {{ $employee->Employee_ID }}" disabled>
                     </div>
                 </div>
             </div>

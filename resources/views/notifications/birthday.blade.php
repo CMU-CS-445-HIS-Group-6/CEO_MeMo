@@ -13,8 +13,8 @@
         <tbody>
             @forelse ($list as $nhanvien)
             <tr>
-                <th>{{ $nhanvien->id }}</th>
-                <td>{{ $nhanvien->FirstName }} {{ $nhanvien->LastName }}</td>
+                <th>{{ $nhanvien->Employee_ID }}</th>
+                <td>{{ $nhanvien->First_Name }} {{ $nhanvien->Last_Name }}</td>
                 <td>{{ $nhanvien->Birthday }}</td>
             </tr>
             @empty

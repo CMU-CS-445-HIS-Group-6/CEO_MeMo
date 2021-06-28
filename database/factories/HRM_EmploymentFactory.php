@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\HRM_Department;
+use App\Models\HRM_Employment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class HRM_DepartmentFactory extends Factory
+class HRM_EmploymentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = HRM_Department::class;
+    protected $model = HRM_Employment::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,7 @@ class HRM_DepartmentFactory extends Factory
     public function definition()
     {
         return [
-            'Name' => $this->faker->name,
-            'Address' => $this->faker->address,
+            'Hire_Date' => $this->faker->dateTimeThisDecade,
         ];
     }
 }

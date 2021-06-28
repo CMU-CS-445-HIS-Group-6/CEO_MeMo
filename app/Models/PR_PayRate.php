@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class PR_Payroll extends Model
+class PR_PayRate extends Model
 {
     use HasFactory;
     protected $connection = 'mysql';
-    protected $table = 'payrolls';
+    protected $table = 'PayRates';
     public $timestamps = false;
+    public $primaryKey = 'idPayRates';
     protected $fillable = [
-        'employee_id', 'WorkingDays', 'PaidToDays', 'PaidLastYear',
+        'PayRateName', 'value', 'TaxPercentage', 'PayType', 'PayAmount', 'PT-Level',
     ];
 
     public function employee()

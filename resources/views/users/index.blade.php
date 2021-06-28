@@ -26,14 +26,14 @@
                 <tbody>
                     @forelse ($list as $nhanvien)
                     <tr>
-                        <th>{{ $nhanvien->id }}</th>
-                        <td>{{ $nhanvien->FirstName }} {{ $nhanvien->LastName }}</td>
+                        <th>{{ $nhanvien->Employee_ID }}</th>
+                        <td>{{ $nhanvien->First_Name }} {{ $nhanvien->Last_Name }}</td>
                         <td>{{ $nhanvien->Gender == 0 ? 'Male' : 'Female' }}</td>
-                        <td>{{ $nhanvien->Address }}</td>
+                        <td>{{ $nhanvien->Address1 }}</td>
                         <td>{{ $nhanvien->Ethnicity }}</td>
                         <td>
-                            <a href="{{ route('users.edit', ['id' => $nhanvien->id ]) }}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button></a>
-                            <a href="javascript:;" onclick="deleteId({{ $nhanvien->id }});"><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td>
+                            <a href="{{ route('users.edit', ['id' => $nhanvien->Employee_ID ]) }}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button></a>
+                            <a href="javascript:;" onclick="deleteId({{ $nhanvien->Employee_ID }});"><button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td>
                         </td>
                     </tr>
                     @empty

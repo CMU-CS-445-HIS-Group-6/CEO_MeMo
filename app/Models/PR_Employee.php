@@ -9,14 +9,10 @@ class PR_Employee extends Model
 {
     use HasFactory;
     protected $connection = 'mysql';
-    protected $table = 'employees';
+    protected $table = 'Employee';
     public $timestamps = false;
+    public $primaryKey = 'idEmployee';
     protected $fillable = [
-        'LastName', 'FirstName', 'VacationDays',
+        'idEmployee', 'EmployeeNumber', 'LastName', 'FirstName', 'SSN', 'PayRate', 'PayRates_idPayRates', 'VacationDays', 'PaidToDays', 'PaidLastYear',
     ];
-
-    public function payroll()
-    {
-        return $this->hasOne(PR_Payroll::class);
-    }
 }

@@ -14,20 +14,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\HRM_Department::factory(5)->create();
-        \App\Models\HRM_Employee::factory(10)->create()->each(function ($employee) {
+        \App\Models\HRM_Personal::factory(10)->create()->each(function ($employee) {
             $now = new DateTime();
-            $daysTillNow = $now->diff($employee->RecruitmentDate)->format('%a');
+            $factory = \App\Models\HRM_Employment::factory()->create([
+                'Employee_ID' => $employee->Employee_ID,
+            ]);
+            $hiredate = $factory->Hire_Date;
+            $daysTillNow = $now->diff($hiredate)->format('%a');
             $workingDays = rand(0, $daysTillNow); // <= Days from recruiment date
             $paidLastYear = rand(5000, 15000);
             $paidToDays = round($paidLastYear / 365 * $workingDays, 2);
             \App\Models\PR_Employee::factory()->create([
-                'FirstName' => $employee->FirstName,
-                'LastName' => $employee->LastName,
-            ]);
-            \App\Models\PR_Payroll::factory()->create([
-                'employee_id' => $employee->id,
-                'WorkingDays' => $workingDays,
+                'idEmployee' => $employee->Employee_ID,
+                'FirstName' => $employee->First_Name,
+                'LastName' => $employee->Last_Name,
                 'PaidToDays' => $paidToDays,
                 'PaidLastYear' => $paidLastYear,
             ]);

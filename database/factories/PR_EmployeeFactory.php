@@ -21,10 +21,15 @@ class PR_EmployeeFactory extends Factory
      */
     public function definition()
     {
+        $paidLastYear = rand(5000, 15000);
+
         return [
             'LastName' => $this->faker->lastName,
             'FirstName' => $this->faker->firstName,
+            'PayRate' => $this->faker->randomNumber,
             'VacationDays' => $this->faker->numberBetween(0, 5),
+            'PaidToDays' => rand($paidLastYear, $paidLastYear * 3),
+            'PaidLastYear' => $paidLastYear,
         ];
     }
 }

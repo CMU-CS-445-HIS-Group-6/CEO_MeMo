@@ -20,6 +20,12 @@
                 @endif
                 <div class="col-10">
                     <div class="mb-3 row">
+                        <label for="id" class="col-sm-2 col-form-label">ID</label>
+                        <div class="col-sm-10">
+                            <input id="id" name="id" class="form-control" value="{{ old('id') }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <label for="firstname" class="col-sm-2 col-form-label">First name</label>
                         <div class="col-sm-10">
                             <input id="firstname" name="firstname" class="form-control" value="{{ old('firstname') }}">
@@ -79,29 +85,23 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="birthday" class="col-sm-2 col-form-label">Recruitment Date</label>
+                        <label for="shareholder_status" class="col-sm-2 col-form-label">Shareholder Status</label>
                         <div class="col-sm-10">
-                            <input id="recruitmentdate" name="recruitmentdate" class="form-control" type="datetime-local" value="{{ old('recruitmentdate') }}">
+                            <select id="shareholder_status" name="shareholder_status" class="form-control">
+                                <option value="0" @if (old('shareholder_status') == 0) selected @endif>No</option>
+                                <option value="1" @if (old('shareholder_status') == 1) selected @endif>Yes</option>
+                            </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="department_id" class="col-sm-2 col-form-label">Department</label>
+                        <label for="hiredate" class="col-sm-2 col-form-label">Hire date</label>
                         <div class="col-sm-10">
-                            <select id="department_id" name="department_id" class="form-control">
-                                @forelse ($departments as $department)
-                                <option value="{{ $department->id }}">{{ $department->Name }}</option>
-                                @empty
-
-                                @endforelse
-                            </select>
+                            <input id="hiredate" name="hiredate" class="form-control" type="datetime-local" value="{{ old('hiredate') }}">
                         </div>
                     </div>
                 </div>
                 <div class="col-2 text-center">
                     <i class="fas fa-user-alt fa-10x"></i>
-                    <div class="pt-5">
-                        <input class="text-center form-control" value="ID: Auto" disabled>
-                    </div>
                 </div>
             </div>
             @csrf

@@ -13,8 +13,8 @@
         <tbody>
             @forelse ($list as $item)
             <tr>
-                <th>{{ $item->employee->id }}</th>
-                <td>{{ $item->employee->FirstName }} {{ $item->employee->LastName }}</td>
+                <th>{{ $item->idEmployee }}</th>
+                <td>{{ $item->FirstName }} {{ $item->LastName }}</td>
                 <td>${{ number_format($item->PaidToDays, 2) }}</td>
             </tr>
             @empty

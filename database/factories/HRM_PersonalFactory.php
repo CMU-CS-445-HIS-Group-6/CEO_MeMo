@@ -2,18 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\HRM_Employee;
-use App\Models\HRM_Department;
+use App\Models\HRM_Personal;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class HRM_EmployeeFactory extends Factory
+class HRM_PersonalFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = HRM_Employee::class;
+    protected $model = HRM_Personal::class;
 
     /**
      * Define the model's default state.
@@ -26,18 +25,22 @@ class HRM_EmployeeFactory extends Factory
         $benefits_old = rand(0, 1) == 0 ? 0 : $this->faker->randomNumber(4);
 
         return [
-            'FirstName' => $this->faker->firstName,
-            'LastName' => $this->faker->lastName,
-            'Gender' => rand(0, 1),
+            'Employee_ID' => $this->faker->randomNumber(2),
+            'First_Name' => $this->faker->firstName,
+            'Last_Name' => $this->faker->lastName,
             'Birthday' => $this->faker->date('Y-m-d', '2000-12-31'),
-            'Address' => $this->faker->address,
+            'Address1' => $this->faker->streetAddress(),
+            'City' => $this->faker->city,
+            'State' => $this->faker->state,
+            'Zip' => '10000',
             'Email' => $this->faker->email,
-            'PhoneNumber' => $this->faker->e164PhoneNumber,
+            'Phone_Number' => $this->faker->e164PhoneNumber,
+            'Gender' => rand(0, 1),
+            'Shareholder_Status' => rand(0, 1),
             'Ethnicity' => $this->faker->words(2, true),
-            'RecruitmentDate' => $this->faker->dateTimeThisDecade(),
+            'Birthday' => $this->faker->dateTimeThisCentury()
             'Benefits' => $benefits,
             'Benefits_old' => $benefits_old,
-            'department_id' => HRM_Department::inRandomOrder()->first()->id,
         ];
     }
 }
